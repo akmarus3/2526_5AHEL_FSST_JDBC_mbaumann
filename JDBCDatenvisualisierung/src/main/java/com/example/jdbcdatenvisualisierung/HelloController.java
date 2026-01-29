@@ -56,7 +56,7 @@ public class HelloController {
                 pieChart.setData(FXCollections.observableArrayList(single));
                 pieChart.setLegendVisible(true);
                 pieChart.setLabelsVisible(false);
-                pieChart.setTitle("Sprachen – Durchschnitt über " + selected.size() + " Land");
+                pieChart.setTitle("Sprachanteil von: "+ codes);
 
                 single.nodeProperty().addListener((obs, o, n) -> {
                     if (n != null && stat.isOfficial()) {
