@@ -39,8 +39,11 @@ public class HelloController {
             }
 
             List<String> codes = new ArrayList<>();
+            List<String> names = new ArrayList<>();
             for (String name : selected) {
                 codes.add(countryMap.get(name));
+                names.add(name);
+
             }
 
             List<LanguageStat> stats = CountryDAO.loadLanguages(codes);
@@ -56,7 +59,7 @@ public class HelloController {
                 pieChart.setData(FXCollections.observableArrayList(single));
                 pieChart.setLegendVisible(true);
                 pieChart.setLabelsVisible(false);
-                pieChart.setTitle("Sprachanteil von: "+ codes);
+                pieChart.setTitle("Sprachanteil von: "+ names);
 
                 single.nodeProperty().addListener((obs, o, n) -> {
                     if (n != null && stat.isOfficial()) {
@@ -90,7 +93,7 @@ public class HelloController {
             pieChart.setLabelsVisible(true);
             pieChart.setData(data);
             pieChart.setTitle(
-                    "Sprachen – Durchschnitt über " + selected.size() + " Länder"
+                    "Sprachanteil von: "+ names
             );
 
         } catch (Exception e) {
